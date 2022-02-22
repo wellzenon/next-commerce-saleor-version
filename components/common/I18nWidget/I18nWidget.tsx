@@ -14,6 +14,13 @@ interface LOCALE_DATA {
 }
 
 const LOCALES_MAP: Record<string, LOCALE_DATA> = {
+  'pt-BR': {
+    name: 'Português Brasileiro',
+    img: {
+      filename: 'flag-pt-br.svg',
+      alt: 'Bandeira Brasileira',
+    },
+  },
   es: {
     name: 'Español',
     img: {

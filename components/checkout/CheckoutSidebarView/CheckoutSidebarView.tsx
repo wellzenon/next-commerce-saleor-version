@@ -10,8 +10,10 @@ import ShippingWidget from '../ShippingWidget'
 import PaymentWidget from '../PaymentWidget'
 import SidebarLayout from '@components/common/SidebarLayout'
 import s from './CheckoutSidebarView.module.css'
+import { useTranslations } from 'next-intl'
 
 const CheckoutSidebarView: FC = () => {
+  const t = useTranslations('Layout.Sidebar.CheckoutSidebarView')
   const { setSidebarView } = useUI()
   const { data } = useCart()
 
@@ -35,7 +37,7 @@ const CheckoutSidebarView: FC = () => {
     >
       <div className="px-4 sm:px-6 flex-1">
         <Link href="/cart">
-          <Text variant="sectionHeading">Checkout</Text>
+          <Text variant="sectionHeading">{t('link')}</Text>
         </Link>
 
         <PaymentWidget onClick={() => setSidebarView('PAYMENT_VIEW')} />
@@ -56,20 +58,20 @@ const CheckoutSidebarView: FC = () => {
       <div className="flex-shrink-0 px-6 py-6 sm:px-6 sticky z-20 bottom-0 w-full right-0 left-0 bg-accent-0 border-t text-sm">
         <ul className="pb-2">
           <li className="flex justify-between py-1">
-            <span>Subtotal</span>
+            <span>{t('subtotal')}</span>
             <span>{subTotal}</span>
           </li>
           <li className="flex justify-between py-1">
-            <span>Taxes</span>
-            <span>Calculated at checkout</span>
+            <span>{t('taxesTitle')}</span>
+            <span>{t('taxes')}</span>
           </li>
           <li className="flex justify-between py-1">
-            <span>Shipping</span>
-            <span className="font-bold tracking-wide">FREE</span>
+            <span>{t('shipping')}</span>
+            <span className="font-bold tracking-wide">{t('free')}</span>
           </li>
         </ul>
         <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-2">
-          <span>Total</span>
+          <span>{t('total')}</span>
           <span>{total}</span>
         </div>
         <div>
@@ -78,7 +80,7 @@ const CheckoutSidebarView: FC = () => {
                 Confirm Purchase
               </Button> */}
           <Button Component="a" width="100%" variant="ghost" disabled>
-            Continue
+            {t('button')}
           </Button>
         </div>
       </div>

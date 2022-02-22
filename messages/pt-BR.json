@@ -1,0 +1,171 @@
+{
+  "Layout": {
+    "FeatureBar": {
+      "title": "Esse site usa cookies para melhorar a experiência. Ao clicar, você aceita nossa Política de Privacidade.",
+      "button": "Aceitar cookies"
+    },
+    "Navbar": {
+      "all": "Todos"
+    },
+    "Searchbar": {
+      "label": "Busca",
+      "placeholder": "Busque produtos..."
+    },
+    "Modal": {
+      "LoginView": {
+        "message": "Você ",
+        "messageLink": "esqueceu sua senha?",
+        "email": "Email",
+        "password": "Senha",
+        "button": "Entrar",
+        "register": "Ainda não tem uma conta?",
+        "registerLink": "Faça uma conta"
+      },
+      "SignUpView": {
+        "first name": "Primeiro Nome",
+        "last name": "Último Nome",
+        "email": "Email",
+        "password": "Senha",
+        "infoTitle": "Info: ",
+        "info": "Senhas precisam ser maiores que 7 letras e incluir números.",
+        "button": "Cadastrar",
+        "login": "Já tem uma conta?",
+        "loginLink": "Entre"
+      },
+      "ForgotPassword": {
+        "email": "Email",
+        "button": "Recupere sua senha",
+        "login question": "Já tem uma conta?",
+        "login link": "Entre"
+      }
+    },
+    "Sidebar": {
+      "UserNav": {
+        "orders": "Minhas Compras",
+        "profile": "Meu Perfil",
+        "cart": "Meu Carrinho",
+        "theme": "Tema: <strong>{theme}</strong>",
+        "logout": "Sair"
+      },
+      "CartSidebarView": {
+        "emptyTitle": "Seu carrinho está vazio",
+        "emptyDescription": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+        "error": "Não conseguimos processar sua compra. Por favor verifique as informações do seu cartão de crédito e tente novamente.",
+        "success": "Obrigado pela compra.",
+        "link": "Meu Carrinho",
+        "subtotal": "Subtotal",
+        "taxesTitle": "Impostos",
+        "taxes": "Calculadas no pagamento",
+        "shipping": "Envio",
+        "free": "GRÁTIS",
+        "total": "Total",
+        "button": "Continuar para o Pagamento",
+        "close": "Fechar",
+        "back": "Voltar"
+      },
+      "CheckoutSidebarView": {
+        "link": "Pagamento",
+        "subtotal": "Subtotal",
+        "taxesTitle": "Impostos",
+        "taxes": "Calculadas no pagamento",
+        "shipping": "Envio",
+        "free": "GRÁTIS",
+        "total": "Total",
+        "button": "Continue"
+      },
+      "PaymentMethodView": {
+        "title": "Método de Pagamento",
+        "card name": "Nome do Dono do Cartão",
+        "card number": "Número do Cartão",
+        "expires": "Data de expiração",
+        "cvc": "Dígitos Verificadores (CVC)",
+        "first name": "Primeiro Nome",
+        "last name": "Último Nome",
+        "company": "Empresa (Opcional)",
+        "address": "Rua e Número do Endereço",
+        "address comp": "Apartamento ou Complemento (Opcional)",
+        "code": "CEP",
+        "city": "Cidade",
+        "country": "País/Estado",
+        "button": "Continue"
+      },
+      "ShippingView": {
+        "title": "Envio",
+        "same": "O mesmo endereço de cobrança",
+        "different": "Usar um endereço diferente do de cobrança",
+        "first name": "Primeiro Nome",
+        "last name": "Último Nome",
+        "company": "Empresa (Opcional)",
+        "address": "Rua e Número do Endereço",
+        "address comp": "Apartamento ou Complemento (Opcional)",
+        "code": "CEP",
+        "city": "Cidade",
+        "country": "País/Estado",
+        "button": "Continue"
+      },
+      "PaymentWidget": {
+        "text": "Adicione Método de Pagamento"
+      },
+      "ShippingWidget": {
+        "text": "Adicione Endereço de Envio"
+      }
+    }
+  },
+  "Product": {
+    "related": "Produtos Relacionados",
+    "unavailable": "Não Disponível",
+    "add": "Adicionar ao Carrinho"
+  },
+  "NotFound": {
+    "title": "Página Não Econtrada",
+    "details": "A página solicitada não existe ou você não tem permissão para acessá-la."
+  },
+  "Cart": {
+    "emptyTitle": "Seu carrinho está vazio",
+    "emptyDescription": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "error": "Não conseguimos processar sua compra. Por favor verifique as informações do seu cartão de crédito e tente novamente.",
+    "success": "Obrigado pela compra.",
+    "title": "Meu Carrinho",
+    "subtitle": "Confira sua compra",
+    "related": "Antes de sair olhe esses produtos que escolhemos apenas para você",
+    "addShipping": "Adicione Endereço de Envio",
+    "addPayment": "Adicione Método de Pagamento",
+    "subtotal": "Subtotal",
+    "taxesTitle": "Impostos",
+    "taxes": "Calculadas no pagamento",
+    "shipping": "Frete aproximado",
+    "free": "GRÁTIS",
+    "total": "Total",
+    "continue": "Continuar Comprando",
+    "proceed": "Continuar para o Pagamento"
+  },
+  "Orders": {
+    "title": "Minhas Compras",
+    "message": "Nenhuma compra encontrada",
+    "details": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake."
+  },
+  "Profile": {
+    "title": "Meu Perfil",
+    "name": "Nome Completo",
+    "email": "Email"
+  },
+  "Search": {
+    "Category": "Categoria",
+    "All Categories": "Todas as Categorias",
+    "Design": "Design",
+    "All Designs": "Todos os Designs",
+    "All Designers": "Todos os Designers",
+    "result": "Mostrando {quantity} resultados para <strong>{query}</strong>",
+    "noMatch": "Nenhum produto encotrado",
+    "noMatchCat": "Nenhum produto encontrado na categoria selecionada.",
+    "searching": "Buscando...",
+    "searchingFor": "Buscando por",
+    "sort": "Ordem",
+    "relevance": "Relevância"
+  },
+  "Wishlist": {
+    "emptyTitle": "Sua Lista de Desejos está vázia",
+    "emptyMessage": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "AddBtn": "Adicionar ao Carrinho"
+  }
+}

@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import type { SearchPropsType } from '@lib/search-props'
 import Link from 'next/link'
-import { useState } from 'react'
+import { Children, useState } from 'react'
 import { useRouter } from 'next/router'
 
 import { Layout } from '@components/common'
@@ -27,8 +27,10 @@ import {
   getDesignerPath,
   useSearchMeta,
 } from '@lib/search'
+import { useTranslations } from 'next-intl'
 
 export default function Search({ categories, brands }: SearchPropsType) {
+  const t = useTranslations('Search')
   const [activeFilter, setActiveFilter] = useState('')
   const [toggleFilter, setToggleFilter] = useState(false)
 
@@ -80,8 +82,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-expanded="true"
                 >
                   {activeCategory?.name
-                    ? `Category: ${activeCategory?.name}`
-                    : 'All Categories'}
+                    ? `${t('Category')}: ${activeCategory?.name}`
+                    : t('All Categories')}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +130,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          All Categories
+                          {t('All Categories')}
                         </a>
                       </Link>
                     </li>
@@ -178,8 +180,8 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-expanded="true"
                 >
                   {activeBrand?.name
-                    ? `Design: ${activeBrand?.name}`
-                    : 'All Designs'}
+                    ? `${t('Design')}: ${activeBrand?.name}`
+                    : t('All Designs')}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -229,7 +231,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          All Designers
+                          {t('All Designers')}
                         </a>
                       </Link>
                     </li>
@@ -279,12 +281,16 @@ export default function Search({ categories, brands }: SearchPropsType) {
                       hidden: !data.found,
                     })}
                   >
-                    Showing {data.products.length} results{' '}
-                    {q && (
-                      <>
-                        for "<strong>{q}</strong>"
-                      </>
-                    )}
+                    {t.rich('result', {
+                      quantity: data.products.length.toString(),
+                      query: (
+                        q ||
+                        activeCategory?.name ||
+                        activeBrand?.name ||
+                        ''
+                      ).toString(),
+                      strong: (children) => <strong>{children}</strong>,
+                    })}
                   </span>
                   <span
                     className={cn('animated', {
@@ -294,21 +300,19 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   >
                     {q ? (
                       <>
-                        There are no products that match "<strong>{q}</strong>"
+                        {`${t('noMatch')}: `} <strong>{q}</strong>
                       </>
                     ) : (
-                      <>
-                        There are no products that match the selected category.
-                      </>
+                      <>{t('noMatchCat')}</>
                     )}
                   </span>
                 </>
               ) : q ? (
                 <>
-                  Searching for: "<strong>{q}</strong>"
+                  {`${t('searchingFor')}: `} <strong>{q}</strong>
                 </>
               ) : (
-                <>Searching...</>
+                <>{t('searching')}</>
               )}
             </div>
           )}
@@ -351,7 +355,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                   aria-haspopup="true"
                   aria-expanded="true"
                 >
-                  {sort ? `Sort: ${sort}` : 'Relevance'}
+                  {sort ? `${t('sort')}: ${sort}` : t('relevance')}
                   <svg
                     className="-mr-1 ml-2 h-5 w-5"
                     xmlns="http://www.w3.org/2000/svg"
@@ -394,7 +398,7 @@ export default function Search({ categories, brands }: SearchPropsType) {
                             'block lg:inline-block px-4 py-2 lg:p-0 lg:my-2 lg:mx-4'
                           }
                         >
-                          Relevance
+                          {t('relevance')}
                         </a>
                       </Link>
                     </li>
@@ -435,5 +439,5 @@ export default function Search({ categories, brands }: SearchPropsType) {
     </Container>
   )
 }
-
+Search.messages = ['Search', ...Layout.messages]
 Search.Layout = Layout

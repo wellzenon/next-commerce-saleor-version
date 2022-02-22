@@ -6,6 +6,8 @@ import { Text, Container } from '@components/ui'
 import { useCustomer } from '@framework/customer'
 import { WishlistCard } from '@components/wishlist'
 import useWishlist from '@framework/wishlist/use-wishlist'
+import { pick } from 'lodash'
+import { useTranslations } from 'next-intl'
 
 export async function getStaticProps({
   preview,
@@ -24,9 +26,14 @@ export async function getStaticProps({
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
+  const messages = pick(
+    await import(`../messages/${locale}.json`),
+    Wishlist.messages
+  )
 
   return {
     props: {
+      messages,
       pages,
       categories,
     },
@@ -34,6 +41,7 @@ export async function getStaticProps({
 }
 
 export default function Wishlist() {
+  const t = useTranslations('Wishlist')
   const { data: customer } = useCustomer()
   // @ts-ignore Shopify - Fix this types
   const { data, isLoading, isEmpty } = useWishlist({ includeProducts: true })
@@ -49,10 +57,10 @@ export default function Wishlist() {
                 <Heart className="absolute" />
               </span>
               <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-                Your wishlist is empty
+                {t('emptyTitle')}
               </h2>
               <p className="text-accent-6 px-10 text-center pt-2">
-                Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+                {t('emptyMessage')}
               </p>
             </div>
           ) : (
@@ -68,4 +76,5 @@ export default function Wishlist() {
   )
 }
 
+Wishlist.messages = ['Wishlist', ...Layout.messages]
 Wishlist.Layout = Layout

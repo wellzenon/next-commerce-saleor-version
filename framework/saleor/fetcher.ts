@@ -4,7 +4,6 @@ import { getToken, handleFetchResponse } from './utils'
 
 const fetcher: Fetcher = async ({ url = API_URL, method = 'POST', variables, query }) => {
   const token = getToken()
-
   return handleFetchResponse(
     await fetch(url!, {
       method,
@@ -13,6 +12,7 @@ const fetcher: Fetcher = async ({ url = API_URL, method = 'POST', variables, que
         Authorization: `JWT ${token}`,
         'Content-Type': 'application/json',
       },
+      credentials: 'include',
     })
   )
 }

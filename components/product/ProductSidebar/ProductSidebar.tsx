@@ -9,6 +9,7 @@ import {
   selectDefaultOptionFromProduct,
   SelectedOptions,
 } from '../helpers'
+import { useTranslations } from 'next-intl'
 
 interface ProductSidebarProps {
   product: Product
@@ -20,6 +21,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
   const { openSidebar } = useUI()
   const [loading, setLoading] = useState(false)
   const [selectedOptions, setSelectedOptions] = useState<SelectedOptions>({})
+  const t = useTranslations('Product')
 
   useEffect(() => {
     selectDefaultOptionFromProduct(product, setSelectedOptions)
@@ -65,9 +67,7 @@ const ProductSidebar: FC<ProductSidebarProps> = ({ product, className }) => {
             loading={loading}
             disabled={variant?.availableForSale === false}
           >
-            {variant?.availableForSale === false
-              ? 'Not Available'
-              : 'Add To Cart'}
+            {variant?.availableForSale === false ? t('unavailable') : t('add')}
           </Button>
         )}
       </div>

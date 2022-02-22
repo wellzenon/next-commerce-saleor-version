@@ -1,6 +1,9 @@
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 
 import commerce from '@lib/api/commerce'
+import { pick } from 'lodash'
+
+import Search from '@components/search'
 
 export async function getSearchStaticProps({
   preview,
@@ -12,8 +15,14 @@ export async function getSearchStaticProps({
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
+  const messages = pick(
+    await import(`../messages/${locale}.json`),
+    Search.messages
+  )
+
   return {
     props: {
+      messages,
       pages,
       categories,
       brands,

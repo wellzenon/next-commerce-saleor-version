@@ -16,6 +16,7 @@ import CheckoutSidebarView from '@components/checkout/CheckoutSidebarView'
 
 import LoginView from '@components/auth/LoginView'
 import s from './Layout.module.css'
+import { useTranslations } from 'next-intl'
 
 const Loading = () => (
   <div className="w-80 h-80 flex items-center text-center justify-center p-3">
@@ -23,24 +24,30 @@ const Loading = () => (
   </div>
 )
 
-const dynamicProps = {
-  loading: () => <Loading />,
-}
+// const dynamicProps = {
+//   loading: () => <Loading />,
+// }
 
-const SignUpView = dynamic(
-  () => import('@components/auth/SignUpView'),
-  dynamicProps
-)
+const SignUpView = dynamic(() => import('@components/auth/SignUpView'), {
+  loading() {
+    return <Loading />
+  },
+})
 
 const ForgotPassword = dynamic(
   () => import('@components/auth/ForgotPassword'),
-  dynamicProps
+  {
+    loading() {
+      return <Loading />
+    },
+  }
 )
 
-const FeatureBar = dynamic(
-  () => import('@components/common/FeatureBar'),
-  dynamicProps
-)
+const FeatureBar = dynamic(() => import('@components/common/FeatureBar'), {
+  loading() {
+    return <Loading />
+  },
+})
 
 interface Props {
   pageProps: {
@@ -90,12 +97,13 @@ const SidebarUI: FC = () => {
   ) : null
 }
 
-const Layout: FC<Props> = ({
+const Layout: FC<Props> & { messages: string[] } = ({
   children,
   pageProps: { categories = [], ...pageProps },
 }) => {
   const { acceptedCookies, onAcceptCookies } = useAcceptCookies()
   const { locale = 'en-US' } = useRouter()
+  const t = useTranslations('Layout.FeatureBar')
   const navBarlinks = categories.slice(0, 2).map((c) => ({
     label: c.name,
     href: `/search/${c.slug}`,
@@ -110,11 +118,11 @@ const Layout: FC<Props> = ({
         <ModalUI />
         <SidebarUI />
         <FeatureBar
-          title="This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy."
+          title={t('title')}
           hide={acceptedCookies}
           action={
             <Button className="mx-5" onClick={() => onAcceptCookies()}>
-              Accept cookies
+              {t('button')}
             </Button>
           }
         />
@@ -122,5 +130,5 @@ const Layout: FC<Props> = ({
     </CommerceProvider>
   )
 }
-
+Layout.messages = ['Layout']
 export default Layout

@@ -9,6 +9,8 @@ import { Heart, Bag } from '@components/icons'
 import { useUI } from '@components/ui/context'
 import DropdownMenu from './DropdownMenu'
 import s from './UserNav.module.css'
+import { getToken } from '../../../framework/saleor/utils/customer-token'
+import { result } from 'lodash'
 
 interface Props {
   className?: string
@@ -18,9 +20,15 @@ const countItem = (count: number, item: LineItem) => count + item.quantity
 
 const UserNav: FC<Props> = ({ className }) => {
   const { data } = useCart()
-  const { data: customer } = useCustomer()
+  const { data: customer, revalidate } = useCustomer()
   const { toggleSidebar, closeSidebarIfPresent, openModal } = useUI()
   const itemsCount = data?.lineItems.reduce(countItem, 0) ?? 0
+
+  // const token = getToken()
+  // if (token && !customer) {
+  //   revalidate()
+  //   console.log({ token, customer })
+  // }
 
   return (
     <nav className={cn(s.root, className)}>

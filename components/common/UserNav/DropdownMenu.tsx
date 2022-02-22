@@ -15,25 +15,11 @@ import {
   enableBodyScroll,
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
+import { useTranslations } from 'next-intl'
 
 interface DropdownMenuProps {
   open?: boolean
 }
-
-const LINKS = [
-  {
-    name: 'My Orders',
-    href: '/orders',
-  },
-  {
-    name: 'My Profile',
-    href: '/profile',
-  },
-  {
-    name: 'My Cart',
-    href: '/cart',
-  },
-]
 
 const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
@@ -42,7 +28,13 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const [display, setDisplay] = useState(false)
   const { closeSidebarIfPresent } = useUI()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
+  const t = useTranslations('Layout.Sidebar.UserNav')
 
+  const LINKS = [
+    { name: t('orders'), href: '/orders' },
+    { name: t('profile'), href: '/profile' },
+    { name: t('cart'), href: '/cart' },
+  ]
   useEffect(() => {
     if (ref.current) {
       if (display) {
@@ -96,7 +88,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                 }}
               >
                 <div>
-                  Theme: <strong>{theme}</strong>{' '}
+                  {t.rich('theme', {
+                    theme,
+                    strong: (children) => <strong>{children}</strong>,
+                  })}
                 </div>
                 <div className="ml-3">
                   {theme == 'dark' ? (
@@ -112,7 +107,7 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
                 className={cn(s.link, 'border-t border-accent-2 mt-4')}
                 onClick={() => logout()}
               >
-                Logout
+                {t('logout')}
               </a>
             </li>
           </ul>

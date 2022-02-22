@@ -10,12 +10,14 @@ import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Text } from '@components/ui'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import { useTranslations } from 'next-intl'
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
 }
 
 const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
+  const t = useTranslations('Product')
   const { price } = usePrice({
     amount: product.price.value,
     baseAmount: product.price.retailPrice,
@@ -62,7 +64,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
         </div>
         <hr className="mt-7 border-accent-2" />
         <section className="py-12 px-6 mb-10">
-          <Text variant="sectionHeading">Related Products</Text>
+          <Text variant="sectionHeading">{t('related')}</Text>
           <div className={s.relatedProductsGrid}>
             {relatedProducts.map((p) => (
               <div

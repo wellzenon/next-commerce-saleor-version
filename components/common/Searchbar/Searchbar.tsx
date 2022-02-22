@@ -2,6 +2,7 @@ import { FC, InputHTMLAttributes, useEffect, useMemo } from 'react'
 import cn from 'classnames'
 import s from './Searchbar.module.css'
 import { useRouter } from 'next/router'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   className?: string
@@ -10,6 +11,7 @@ interface Props {
 
 const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
   const router = useRouter()
+  const t = useTranslations('Layout.Searchbar')
 
   useEffect(() => {
     router.prefetch('/search')
@@ -36,12 +38,12 @@ const Searchbar: FC<Props> = ({ className, id = 'search' }) => {
     () => (
       <div className={cn(s.root, className)}>
         <label className="hidden" htmlFor={id}>
-          Search
+          {t('label')}
         </label>
         <input
           id={id}
           className={s.input}
-          placeholder="Search for products..."
+          placeholder={t('placeholder')}
           defaultValue={router.query.q}
           onKeyUp={handleKeyUp}
         />

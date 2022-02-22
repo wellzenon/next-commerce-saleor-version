@@ -36,7 +36,6 @@ const ProductCard: FC<Props> = ({
     { [s.slim]: variant === 'slim', [s.simple]: variant === 'simple' },
     className
   )
-
   return (
     <Link href={`/product/${product.slug}`} {...props}>
       <a className={rootClassName}>

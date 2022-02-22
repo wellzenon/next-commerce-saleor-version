@@ -11,6 +11,7 @@ import type { Product } from '@commerce/types/product'
 import usePrice from '@framework/product/use-price'
 import useAddItem from '@framework/cart/use-add-item'
 import useRemoveItem from '@framework/wishlist/use-remove-item'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   product: Product
@@ -19,6 +20,7 @@ interface Props {
 const placeholderImg = '/product-img-placeholder.svg'
 
 const WishlistCard: FC<Props> = ({ product }) => {
+  const t = useTranslations('Wishlist')
   const { price } = usePrice({
     amount: product.price?.value,
     baseAmount: product.price?.retailPrice,
@@ -80,7 +82,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           <Text html={product.description} />
         </div>
         <Button
-          aria-label="Add to Cart"
+          aria-label={t('AddBtn')}
           type="button"
           className={
             'py-1 px-3 border border-secondary rounded-md shadow-sm hover:bg-primary-hover'
@@ -88,7 +90,7 @@ const WishlistCard: FC<Props> = ({ product }) => {
           onClick={addToCart}
           loading={loading}
         >
-          Add to Cart
+          {t('AddBtn')}
         </Button>
       </div>
       <div className="col-span-2 flex flex-col justify-between">

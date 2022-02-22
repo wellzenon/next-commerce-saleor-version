@@ -6,6 +6,8 @@ import { Layout } from '@components/common'
 import { Button, Text } from '@components/ui'
 import { Bag, Cross, Check, MapPin, CreditCard } from '@components/icons'
 import { CartItem } from '@components/cart'
+import { pick } from 'lodash'
+import { useTranslations } from 'next-intl'
 
 export async function getStaticProps({
   preview,
@@ -17,8 +19,13 @@ export async function getStaticProps({
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
+  const messages = pick(
+    await import(`../messages/${locale}.json`),
+    Cart.messages
+  )
+
   return {
-    props: { pages, categories },
+    props: { messages, pages, categories },
   }
 }
 
@@ -26,6 +33,7 @@ export default function Cart() {
   const error = null
   const success = null
   const { data, isLoading, isEmpty } = useCart()
+  const t = useTranslations('Cart')
 
   const { price: subTotal } = usePrice(
     data && {
@@ -49,10 +57,10 @@ export default function Cart() {
               <Bag className="absolute" />
             </span>
             <h2 className="pt-6 text-2xl font-bold tracking-wide text-center">
-              Your cart is empty
+              {t('emptyTitle')}
             </h2>
             <p className="text-accent-6 px-10 text-center pt-2">
-              Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.
+              {t('emptyDescription')}
             </p>
           </div>
         ) : error ? (
@@ -61,8 +69,7 @@ export default function Cart() {
               <Cross width={24} height={24} />
             </span>
             <h2 className="pt-6 text-xl font-light text-center">
-              We couldn’t process the purchase. Please check your card
-              information and try again.
+              {t('error')}
             </h2>
           </div>
         ) : success ? (
@@ -71,13 +78,13 @@ export default function Cart() {
               <Check />
             </span>
             <h2 className="pt-6 text-xl font-light text-center">
-              Thank you for your order.
+              {t('success')}
             </h2>
           </div>
         ) : (
           <div className="px-4 sm:px-6 flex-1">
-            <Text variant="pageHeading">My Cart</Text>
-            <Text variant="sectionHeading">Review your Order</Text>
+            <Text variant="pageHeading">{t('title')}</Text>
+            <Text variant="sectionHeading">{t('subtitle')}</Text>
             <ul className="py-6 space-y-6 sm:py-0 sm:space-y-0 sm:divide-y sm:divide-accent-2 border-b border-accent-2">
               {data!.lineItems.map((item: any) => (
                 <CartItem
@@ -88,10 +95,7 @@ export default function Cart() {
               ))}
             </ul>
             <div className="my-6">
-              <Text>
-                Before you leave, take a look at these items. We picked them
-                just for you
-              </Text>
+              <Text>{t('related')}</Text>
               <div className="flex py-6 space-x-6">
                 {[1, 2, 3, 4, 5, 6].map((x) => (
                   <div
@@ -115,7 +119,7 @@ export default function Cart() {
                   <MapPin />
                 </div>
                 <div className="text-sm text-center font-medium">
-                  <span className="uppercase">+ Add Shipping Address</span>
+                  <span className="uppercase">{`+ ${t('addShipping')}`}</span>
                   {/* <span>
                     1046 Kearny Street.<br/>
                     San Franssisco, California
@@ -129,7 +133,7 @@ export default function Cart() {
                   <CreditCard />
                 </div>
                 <div className="text-sm text-center font-medium">
-                  <span className="uppercase">+ Add Payment Method</span>
+                  <span className="uppercase">{`+ ${t('addPayment')}`}</span>
                   {/* <span>VISA #### #### #### 2345</span> */}
                 </div>
               </div>
@@ -138,20 +142,20 @@ export default function Cart() {
           <div className="border-t border-accent-2">
             <ul className="py-3">
               <li className="flex justify-between py-1">
-                <span>Subtotal</span>
+                <span>{t('subtotal')}</span>
                 <span>{subTotal}</span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Taxes</span>
-                <span>Calculated at checkout</span>
+                <span>{t('taxesTitle')}</span>
+                <span>{t('taxes')}</span>
               </li>
               <li className="flex justify-between py-1">
-                <span>Estimated Shipping</span>
-                <span className="font-bold tracking-wide">FREE</span>
+                <span>{t('shipping')}</span>
+                <span className="font-bold tracking-wide">{t('free')}</span>
               </li>
             </ul>
             <div className="flex justify-between border-t border-accent-2 py-3 font-bold mb-10">
-              <span>Total</span>
+              <span>{t('total')}</span>
               <span>{total}</span>
             </div>
           </div>
@@ -159,11 +163,11 @@ export default function Cart() {
             <div className="w-full lg:w-72">
               {isEmpty ? (
                 <Button href="/" Component="a" width="100%">
-                  Continue Shopping
+                  {t('continue')}
                 </Button>
               ) : (
                 <Button href="/checkout" Component="a" width="100%">
-                  Proceed to Checkout
+                  {t('proceed')}
                 </Button>
               )}
             </div>
@@ -174,4 +178,5 @@ export default function Cart() {
   )
 }
 
+Cart.messages = ['Cart', ...Layout.messages]
 Cart.Layout = Layout

@@ -4,6 +4,7 @@ import { ProductCard } from '@components/product'
 import { Grid, Marquee, Hero } from '@components/ui'
 // import HomeAllProductsGrid from '@components/common/HomeAllProductsGrid'
 import type { GetStaticPropsContext, InferGetStaticPropsType } from 'next'
+import { pick } from 'lodash'
 
 export async function getStaticProps({
   preview,
@@ -23,9 +24,14 @@ export async function getStaticProps({
   const { products } = await productsPromise
   const { pages } = await pagesPromise
   const { categories, brands } = await siteInfoPromise
+  const messages = pick(
+    await import(`../messages/${locale}.json`),
+    Home.messages
+  )
 
   return {
     props: {
+      messages,
       products,
       categories,
       brands,
@@ -86,5 +92,5 @@ export default function Home({
     </>
   )
 }
-
+Home.messages = ['Home', ...Layout.messages]
 Home.Layout = Layout

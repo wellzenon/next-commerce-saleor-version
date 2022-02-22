@@ -7,6 +7,7 @@ import { useRouter } from 'next/router'
 import commerce from '@lib/api/commerce'
 import { Layout } from '@components/common'
 import { ProductView } from '@components/product'
+import { pick } from 'lodash'
 
 export async function getStaticProps({
   params,
@@ -36,9 +37,14 @@ export async function getStaticProps({
   if (!product) {
     throw new Error(`Product with slug '${params!.slug}' not found`)
   }
+  const messages = pick(
+    await import(`../../messages/${locale}.json`),
+    Slug.messages
+  )
 
   return {
     props: {
+      messages,
       pages,
       product,
       relatedProducts,
@@ -77,5 +83,5 @@ export default function Slug({
     <ProductView product={product} relatedProducts={relatedProducts} />
   )
 }
-
+Slug.messages = ['Product', ...Layout.messages]
 Slug.Layout = Layout

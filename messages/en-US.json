@@ -1,0 +1,169 @@
+{
+  "Layout": {
+    "FeatureBar": {
+      "title": "This site uses cookies to improve your experience. By clicking, you agree to our Privacy Policy.",
+      "button": "Accept cookies"
+    },
+    "Navbar": {
+      "all": "All"
+    },
+    "Searchbar": {
+      "label": "Search",
+      "placeholder": "Search for products..."
+    },
+    "Modal": {
+      "LoginView": {
+        "message": "Did you ",
+        "messageLink": "forget your password?",
+        "email": "Email",
+        "password": "Password",
+        "button": "Log In",
+        "register": "Don't have an account?",
+        "registerLink": "Sign Up"
+      },
+      "SignUpView": {
+        "first name": "First Name",
+        "last name": "Last Name",
+        "email": "Email",
+        "password": "Password",
+        "infoTitle": "Info: ",
+        "info": "Passwords must be longer than 7 chars and include numbers.",
+        "button": "Sign Up",
+        "login": "Do you have an account?",
+        "loginLink": "Log In"
+      },
+      "ForgotPassword": {
+        "email": "Email",
+        "button": "Recover Password",
+        "login question": "Do you have an account?",
+        "login link": "Log In"
+      }
+    },
+    "Sidebar": {
+      "UserNav": {
+        "orders": "My Orders",
+        "profile": "My Profile",
+        "cart": "My Cart",
+        "theme": "Theme: <strong>{theme}</strong>",
+        "logout": "Logout"
+      },
+      "CartSidebarView": {
+        "emptyTitle": "Your cart is empty",
+        "emptyDescription": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+        "error": "We couldn’t process the purchase. Please check your card information and try again.",
+        "success": "Thank you for your order.",
+        "link": "My Cart",
+        "subtotal": "Subtotal",
+        "taxesTitle": "Taxes",
+        "taxes": "Calculated at checkout",
+        "shipping": "Shipping",
+        "free": "FREE",
+        "total": "Total",
+        "button": "Proceed to Checkout"
+      },
+      "CheckoutSidebarView": {
+        "link": "Checkout",
+        "subtotal": "Subtotal",
+        "taxesTitle": "Taxes",
+        "taxes": "Calculated at checkout",
+        "shipping": "Shipping",
+        "free": "FREE",
+        "total": "Total",
+        "button": "Continue"
+      },
+      "PaymentMethodView": {
+        "title": "Payment Method",
+        "card name": "Cardholder Name",
+        "card number": "Card Number",
+        "expires": "Expires",
+        "cvc": "CVC",
+        "first name": "First Name",
+        "last name": "Last Name",
+        "company": "Company (Optional)",
+        "address": "Street and House Number",
+        "address comp": "Apartment, Suite, Etc. (Optional)",
+        "code": "Postal Code",
+        "city": "City",
+        "country": "Country/Region",
+        "button": "Continue"
+      },
+      "ShippingView": {
+        "title": "Shipping",
+        "same": "Same as billing address",
+        "different": "Use a different shipping address",
+        "first name": "First Name",
+        "last name": "Last Name",
+        "company": "Company (Optional)",
+        "address": "Street and House Number",
+        "address comp": "Apartment, Suite, Etc. (Optional)",
+        "code": "Postal Code",
+        "city": "City",
+        "country": "Country/Region",
+        "button": "Continue"
+      },
+      "PaymentWidget": {
+        "text": "Add Payment Method"
+      },
+      "ShippingWidget": {
+        "text": "Add Shipping Address"
+      }
+    }
+  },
+  "Product": {
+    "related": "Related Products",
+    "unavailable": "Not Available",
+    "add": "Add To Cart"
+  },
+  "NotFound": {
+    "title": "Not Found",
+    "details": "The requested page doesn't exist or you don't have access to it."
+  },
+  "Cart": {
+    "emptyTitle": "Your cart is empty",
+    "emptyDescription": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "error": "We couldn’t process the purchase. Please check your card information and try again.",
+    "success": "Thank you for your order.",
+    "title": "My Cart",
+    "subtitle": "Review your order",
+    "related": "Before you leave, take a look at these items. We picked them just for you",
+    "addShipping": "Add Shipping Address",
+    "addPayment": "Add Payment Address",
+    "subtotal": "Subtotal",
+    "taxesTitle": "Taxes",
+    "taxes": "Calculated at checkout",
+    "shipping": "Estimated Shipping",
+    "free": "FREE",
+    "total": "Total",
+    "continue": "Continue Shopping",
+    "proceed": "Proceed to Checkout"
+  },
+  "Orders": {
+    "title": "My Orders",
+    "message": "No orders found",
+    "details": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake."
+  },
+  "Profile": {
+    "title": "My Profile",
+    "name": "Full Name",
+    "email": "Email"
+  },
+  "Search": {
+    "Category": "Category",
+    "All Categories": "All Categories",
+    "Design": "Design",
+    "All Designs": "All Designs",
+    "All Designers": "All Designers",
+    "result": "Showing {quantity} results for <strong>{query}</strong>",
+    "noMatch": "There are no products that match",
+    "noMatchCat": "There are no products that match the selected category.",
+    "searching": "Searching...",
+    "searchingFor": "Searching for",
+    "sort": "Sort",
+    "relevance": "Relevance"
+  },
+  "Wishlist": {
+    "emptyTitle": "Your wishlist is empty",
+    "emptyMessage": "Biscuit oat cake wafer icing ice cream tiramisu pudding cupcake.",
+    "AddBtn": "Add to Cart"
+  }
+}
