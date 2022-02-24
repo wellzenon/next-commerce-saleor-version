@@ -11,6 +11,7 @@ export { checkoutAttach } from './checkout-attach'
 
 export { default as checkoutToCart } from './checkout-to-cart'
 export { default as handleLogin, handleAutomaticLogin } from './handle-login'
+export { default as handleRefreshToken } from './handle-refresh-token'
 export { default as throwUserErrors } from './throw-user-errors'
 
 export * from './queries'

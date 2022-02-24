@@ -3,12 +3,16 @@ module.exports = {
     purgeLayersByDefault: true,
     applyComplexClasses: true,
   },
-  content: [
-    './pages/**/*.{js,ts,jsx,tsx}',
-    './components/**/*.{js,ts,jsx,tsx}',
-  ],
-  safelist: {
-    standard: ['outline-none'],
+  purge: {
+    content: [
+      './pages/**/*.{js,ts,jsx,tsx}',
+      './components/**/*.{js,ts,jsx,tsx}',
+    ],
+    options: {
+      safelist: {
+        standard: ['outline-none'],
+      },
+    },
   },
   theme: {
     extend: {
