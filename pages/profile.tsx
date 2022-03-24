@@ -5,6 +5,7 @@ import { Layout } from '@components/common'
 import { Container, Text } from '@components/ui'
 import { useTranslations } from 'next-intl'
 import { pick } from 'lodash'
+import { Heart } from '@components/icons'
 
 export async function getStaticProps({
   preview,
@@ -29,7 +30,7 @@ export async function getStaticProps({
 export default function Profile() {
   const { data } = useCustomer()
   const t = useTranslations('Profile')
-
+  console.log({ data })
   return (
     <Container>
       <Text variant="pageHeading">{t('title')}</Text>
@@ -46,6 +47,7 @@ export default function Profile() {
               <Text variant="sectionHeading">{t('email')}</Text>
               <span>{data.email}</span>
             </div>
+            <img src={data.avatar.url} alt={data.firstName} />
           </div>
         </div>
       )}

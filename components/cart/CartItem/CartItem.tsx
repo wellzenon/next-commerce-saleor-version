@@ -1,4 +1,10 @@
-import { ChangeEvent, FocusEventHandler, useEffect, useState } from 'react'
+import {
+  ChangeEvent,
+  FocusEventHandler,
+  useEffect,
+  useState,
+  forwardRef,
+} from 'react'
 import cn from 'classnames'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -82,15 +88,17 @@ const CartItem = ({
       <div className="flex flex-row space-x-4 py-4">
         <div className="w-16 h-16 bg-violet relative overflow-hidden cursor-pointer z-0">
           <Link href={`/product/${item.path}`}>
-            <Image
-              onClick={() => closeSidebarIfPresent()}
-              className={s.productImage}
-              width={150}
-              height={150}
-              src={item.variant.image!.url}
-              alt={item.variant.image!.altText}
-              unoptimized
-            />
+            <a>
+              <Image
+                onClick={() => closeSidebarIfPresent()}
+                className={s.productImage}
+                width={150}
+                height={150}
+                src={item.variant.image!.url}
+                alt={item.variant.image!.altText}
+                unoptimized
+              />
+            </a>
           </Link>
         </div>
         <div className="flex-1 flex flex-col text-base">

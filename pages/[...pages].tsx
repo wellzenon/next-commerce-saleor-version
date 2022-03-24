@@ -4,12 +4,13 @@ import type {
   InferGetStaticPropsType,
 } from 'next'
 import commerce from '@lib/api/commerce'
-import { Text } from '@components/ui'
+import { RichText } from '@components/ui'
 import { Layout } from '@components/common'
 import getSlug from '@lib/get-slug'
 import { missingLocaleInPages } from '@lib/usage-warns'
 import type { Page } from '@commerce/types/page'
 import { useRouter } from 'next/router'
+import { pick } from 'lodash'
 
 export async function getStaticProps({
   preview,
@@ -22,6 +23,11 @@ export async function getStaticProps({
   const siteInfoPromise = commerce.getSiteInfo({ config, preview })
   const { pages } = await pagesPromise
   const { categories } = await siteInfoPromise
+  const messages = pick(
+    await import(`../messages/${locale}.json`),
+    Pages.messages
+  )
+
   const path = params?.pages.join('/')
   const slug = locale ? `${locale}/${path}` : path
   const pageItem = pages.find((p: Page) =>
@@ -43,7 +49,7 @@ export async function getStaticProps({
   }
 
   return {
-    props: { pages, page, categories },
+    props: { messages, pages, page, categories },
     revalidate: 60 * 60, // Every hour
   }
 }
@@ -78,9 +84,10 @@ export default function Pages({
     <h1>Loading...</h1> // TODO (BC) Add Skeleton Views
   ) : (
     <div className="max-w-2xl mx-8 sm:mx-auto py-20">
-      {page?.body && <Text html={page.body} />}
+      {page?.contentJson && <RichText jsonStringData={page?.contentJson} />}
     </div>
   )
 }
 
+Pages.messages = ['Pages', ...Layout.messages]
 Pages.Layout = Layout

@@ -15,6 +15,8 @@ import type {
   Signup,
   Login,
   Logout,
+  ExternalAuthenticationUrl,
+  ExternalObtainAccessTokens,
 } from '@commerce/types'
 
 import type { Fetcher, SWRHook, MutationHook } from './utils/types'
@@ -44,6 +46,8 @@ export type Provider = CommerceConfig & {
     useSignup?: MutationHook<Signup.SignupHook>
     useLogin?: MutationHook<Login.LoginHook>
     useLogout?: MutationHook<Logout.LogoutHook>
+    useExternalAuthenticationUrl?: MutationHook<ExternalAuthenticationUrl.ExternalAuthenticationUrlHook>
+    useExternalObtainAccessTokens?: MutationHook<ExternalObtainAccessTokens.ExternalObtainAccessTokensHook>
   }
 }
 

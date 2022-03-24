@@ -23,7 +23,7 @@ const SidebarLayout: FC<ComponentProps> = ({
         {handleClose && (
           <button
             onClick={handleClose}
-            aria-label="Close"
+            aria-label={t('close')}
             className="hover:text-accent-5 transition ease-in-out duration-150 flex items-center focus:outline-none"
           >
             <Cross className="h-6 w-6 hover:text-accent-3" />
@@ -33,7 +33,7 @@ const SidebarLayout: FC<ComponentProps> = ({
         {handleBack && (
           <button
             onClick={handleBack}
-            aria-label="Go back"
+            aria-label={t('back')}
             className="hover:text-accent-5 transition ease-in-out duration-150 flex items-center focus:outline-none"
           >
             <ChevronLeft className="h-6 w-6 hover:text-accent-3" />

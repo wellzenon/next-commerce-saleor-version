@@ -19,7 +19,8 @@
         "password": "Senha",
         "button": "Entrar",
         "register": "Ainda não tem uma conta?",
-        "registerLink": "Faça uma conta"
+        "registerLink": "Faça uma conta",
+        "or": "Ou faça login:"
       },
       "SignUpView": {
         "first name": "Primeiro Nome",

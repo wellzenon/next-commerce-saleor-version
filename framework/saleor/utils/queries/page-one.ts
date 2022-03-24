@@ -4,6 +4,8 @@ export const PageOne = /* GraphQL */ `
       id
       title
       slug
+      content
+      contentJson
     }
   }
 `

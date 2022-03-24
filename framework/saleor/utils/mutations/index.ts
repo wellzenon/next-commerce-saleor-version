@@ -1,9 +1,13 @@
 export { AccountCreate } from './account-create'
 export { CheckoutCreate } from './checkout-create'
 export { CheckoutLineAdd } from './checkout-line-add'
+export { CheckoutLineAddByToken } from './checkout-line-add-by-token'
 export { CheckoutLineUpdate } from './checkout-line-update'
 export { CheckoutLineDelete } from './checkout-line-remove'
 export { SessionCreate } from './session-create'
 export { SessionDestroy } from './session-destroy'
 export { CheckoutAttach } from './checkout-attach'
 export { RefreshToken } from './refresh-token'
+
+export { ExternalAuthenticationUrl } from './external-authentication-url'
+export { ExternalObtainAccessToken } from './external-obtain-access-token'

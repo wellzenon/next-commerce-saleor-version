@@ -16,6 +16,8 @@ import {
   clearAllBodyScrollLocks,
 } from 'body-scroll-lock'
 import { useTranslations } from 'next-intl'
+import { useCustomer } from '@framework/customer'
+import Image from 'next/image'
 
 interface DropdownMenuProps {
   open?: boolean
@@ -23,10 +25,11 @@ interface DropdownMenuProps {
 
 const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
   const logout = useLogout()
-  const { pathname } = useRouter()
+  const { pathname, reload } = useRouter()
   const { theme, setTheme } = useTheme()
   const [display, setDisplay] = useState(false)
   const { closeSidebarIfPresent } = useUI()
+  const { data: customer } = useCustomer()
   const ref = useRef() as React.MutableRefObject<HTMLUListElement>
   const t = useTranslations('Layout.Sidebar.UserNav')
 
@@ -56,7 +59,15 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
           onClick={() => setDisplay(!display)}
           aria-label="Menu"
         >
-          <Avatar />
+          <Avatar>
+            <Image
+              src={customer.avatar.url}
+              alt={customer.avatar.alt}
+              objectPosition="relative"
+              objectFit="cover"
+              layout="fill"
+            />
+          </Avatar>
         </button>
         {display && (
           <ul className={s.dropdownMenu} ref={ref}>
@@ -105,7 +116,10 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
             <li>
               <a
                 className={cn(s.link, 'border-t border-accent-2 mt-4')}
-                onClick={() => logout()}
+                onClick={async () => {
+                  await logout()
+                  reload()
+                }}
               >
                 {t('logout')}
               </a>

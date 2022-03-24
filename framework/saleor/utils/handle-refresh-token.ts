@@ -1,4 +1,3 @@
-import { FetcherOptions } from '@commerce/utils/types'
 import { getCSRFToken, handleFetchResponse } from '.'
 import { setToken } from './customer-token'
 import * as mutation from './mutations'
@@ -22,8 +21,8 @@ const handleRefreshToken = async (): Promise<RefreshToken['token'] | undefined> 
         )
       : { tokenRefresh: null }
 
-    console.log({ csrfToken, tokenRefresh })
     setToken(tokenRefresh?.token)
+
     return tokenRefresh?.token
   } catch (error) {
     //

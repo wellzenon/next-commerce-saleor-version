@@ -19,7 +19,8 @@
         "password": "Password",
         "button": "Log In",
         "register": "Don't have an account?",
-        "registerLink": "Sign Up"
+        "registerLink": "Sign Up",
+        "or": "Or Sign In:"
       },
       "SignUpView": {
         "first name": "First Name",

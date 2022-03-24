@@ -6,6 +6,10 @@ export const CustomerCurrent = /* GraphQL */ `
       firstName
       lastName
       dateJoined
+      avatar {
+        url
+        alt
+      }
     }
   }
 `

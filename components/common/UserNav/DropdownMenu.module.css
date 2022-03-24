@@ -22,3 +22,7 @@
 .off {
   @apply hidden;
 }
+
+.avatarButton {
+  @apply flex justify-center rounded-full;
+}

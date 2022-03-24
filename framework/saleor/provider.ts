@@ -10,6 +10,9 @@ import { handler as useLogin } from './auth/use-login'
 import { handler as useLogout } from './auth/use-logout'
 import { handler as useSignup } from './auth/use-signup'
 
+import { handler as useExternalAuthenticationUrl } from './auth/use-external-authentication-url'
+import { handler as useExternalObtainAccessTokens } from './auth/use-external-obtain-access-tokens'
+
 import fetcher from './fetcher'
 
 export const saleorProvider = {
@@ -20,7 +23,7 @@ export const saleorProvider = {
   cart: { useCart, useAddItem, useUpdateItem, useRemoveItem },
   customer: { useCustomer },
   products: { useSearch },
-  auth: { useLogin, useLogout, useSignup },
+  auth: { useLogin, useLogout, useSignup, useExternalAuthenticationUrl, useExternalObtainAccessTokens },
 }
 
 export type SaleorProvider = typeof saleorProvider
