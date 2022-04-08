@@ -71,7 +71,8 @@ export const handleCheckout = async (
   { variables: { newCheckoutId, newCheckoutToken, allOldCheckoutsTokens }, headers }: any
 ): Promise<CheckoutCustomerAttach> => {
   const lastCheckoutToken = allOldCheckoutsTokens?.[0]
-  if (!lastCheckoutToken) return await checkoutAttach({ newCheckoutId, fetch, headers })
+
+  if (!lastCheckoutToken) return await checkoutAttach({ checkoutId: newCheckoutId, fetch, headers })
 
   const { checkout } = await getCheckout({ token: newCheckoutToken, fetch, headers })
   const isCartEmpty = !checkout?.lines?.length

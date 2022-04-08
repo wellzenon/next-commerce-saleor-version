@@ -60,13 +60,15 @@ const DropdownMenu: FC<DropdownMenuProps> = ({ open = false }) => {
           aria-label="Menu"
         >
           <Avatar>
-            <Image
-              src={customer.avatar.url}
-              alt={customer.avatar.alt}
-              objectPosition="relative"
-              objectFit="cover"
-              layout="fill"
-            />
+            {customer?.avatar && (
+              <Image
+                src={customer.avatar.url}
+                alt={customer.avatar.alt}
+                objectPosition="relative"
+                objectFit="cover"
+                layout="fill"
+              />
+            )}
           </Avatar>
         </button>
         {display && (

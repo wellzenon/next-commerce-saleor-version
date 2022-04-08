@@ -47,7 +47,7 @@ export default function Profile() {
               <Text variant="sectionHeading">{t('email')}</Text>
               <span>{data.email}</span>
             </div>
-            <img src={data.avatar.url} alt={data.firstName} />
+            {data?.avatar && <img src={data.avatar.url} alt={data.firstName} />}
           </div>
         </div>
       )}

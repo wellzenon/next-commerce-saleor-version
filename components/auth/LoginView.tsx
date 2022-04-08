@@ -5,6 +5,7 @@ import { useUI } from '@components/ui/context'
 import { validate } from 'email-validator'
 import { useTranslations } from 'next-intl'
 import GoogleSignIn from '@components/external-auth/google'
+import FacebookSignIn from '@components/external-auth/facebook'
 
 interface Props {}
 
@@ -80,6 +81,7 @@ const LoginView: FC<Props> = () => {
             </div>
           )}
           <GoogleSignIn />
+          <FacebookSignIn />
           <h2 style={{ textAlign: 'center' }}>{t('or')}</h2>
           <Input type="email" placeholder={t('email')} onChange={setEmail} />
           <Input

@@ -1,5 +1,5 @@
 export const API_URL = process.env.NEXT_PUBLIC_SALEOR_API_URL
 export const API_CHANNEL = process.env.NEXT_PUBLIC_SALEOR_CHANNEL
-export const CHECKOUT_ID_COOKIE = 'saleor.CheckoutID'
-export const SALEOR_TOKEN = 'saleor.Token'
-export const SALEOR_CRSF_TOKEN = 'saleor.CSRFToken'
+export const CHECKOUT_ID_COOKIE = process.env.NEXT_PUBLIC_CHECKOUT_ID_COOKIE
+export const SALEOR_TOKEN = process.env.NEXT_PUBLIC_SALEOR_TOKEN
+export const SALEOR_CRSF_TOKEN = process.env.NEXT_PUBLIC_SALEOR_CRSF_TOKEN

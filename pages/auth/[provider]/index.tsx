@@ -25,7 +25,8 @@ export async function getStaticPaths({ locales }: GetStaticPathsContext) {
 
 const Callback = () => {
   const obtainAccessTokens = useExternalObtainAccessTokens()
-  const { provider, code, state } = useRouter().query
+  const router = useRouter()
+  const { provider, code, state } = router.query
   const pluginId = 'plugin.socialauth'
 
   useEffect(() => {
@@ -33,7 +34,7 @@ const Callback = () => {
       if (code) {
         const input = JSON.stringify({ code, state, provider })
         await obtainAccessTokens({ input, pluginId })
-        history.go(-2)
+        router.push('/')
       }
     })()
   }, [code])
